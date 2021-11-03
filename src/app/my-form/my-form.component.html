@@ -1,0 +1,17 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+    <div>
+        <label>Email : 
+            <input type="email" formControlName="email" required email/>
+        
+        {{ userForm.get('email').errors?.email.rules}}
+        <div *ngIf="userForm.get['email'].errors && !userForm.get['email'].pristine">
+
+            <div [hidden]="!userForm.get['email'].errors.required">email is required</div>
+            <div [hidden]="!userForm.get['email'].invalid">email is invalid</div>
+        </div>
+        </label>
+        <button type="submit" [disabled]="!userForm.valide">Soumettre</button>
+    </div>
+
+</form>
